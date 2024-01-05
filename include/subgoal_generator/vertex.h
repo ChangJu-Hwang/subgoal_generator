@@ -10,8 +10,6 @@ namespace SubgoalGenerator::DynamicGraph
     class Vertex
     {
     public:
-        Vertex() {}
-
         Vertex(std::string _name, const Pose &_current, const Pose &_goal)
         {
             name_ = _name;

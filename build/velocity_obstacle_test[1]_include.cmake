@@ -1,5 +1,0 @@
-if(EXISTS "/home/changju/cpp_ws/subgoal_generator/build/velocity_obstacle_test[1]_tests.cmake")
-  include("/home/changju/cpp_ws/subgoal_generator/build/velocity_obstacle_test[1]_tests.cmake")
-else()
-  add_test(velocity_obstacle_test_NOT_BUILT velocity_obstacle_test_NOT_BUILT)
-endif()
