@@ -56,52 +56,6 @@ CMAKE_BINARY_DIR = /home/changju/cpp_ws/subgoal_generator/build
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target install/strip
-install/strip: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip
-
-# Special rule for the target install/strip
-install/strip/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip/fast
-
-# Special rule for the target install/local
-install/local: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local
-
-# Special rule for the target install/local
-install/local/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local/fast
-
-# Special rule for the target install
-install: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install
-
-# Special rule for the target install
-install/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install/fast
-
-# Special rule for the target list_install_components
-list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
-.PHONY : list_install_components
-
-# Special rule for the target list_install_components
-list_install_components/fast: list_install_components
-
-.PHONY : list_install_components/fast
-
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
@@ -123,17 +77,6 @@ edit_cache:
 edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
-
-# Special rule for the target test
-test:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
-	/usr/bin/ctest --force-new-ctest-process $(ARGS)
-.PHONY : test
-
-# Special rule for the target test
-test/fast: test
-
-.PHONY : test/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -168,32 +111,6 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named velocity_obstacle_test
-
-# Build rule for target.
-velocity_obstacle_test: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 velocity_obstacle_test
-.PHONY : velocity_obstacle_test
-
-# fast build rule for target.
-velocity_obstacle_test/fast:
-	$(MAKE) -f CMakeFiles/velocity_obstacle_test.dir/build.make CMakeFiles/velocity_obstacle_test.dir/build
-.PHONY : velocity_obstacle_test/fast
-
-#=============================================================================
-# Target rules for targets named bvc_gen_test
-
-# Build rule for target.
-bvc_gen_test: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 bvc_gen_test
-.PHONY : bvc_gen_test
-
-# fast build rule for target.
-bvc_gen_test/fast:
-	$(MAKE) -f CMakeFiles/bvc_gen_test.dir/build.make CMakeFiles/bvc_gen_test.dir/build
-.PHONY : bvc_gen_test/fast
-
-#=============================================================================
 # Target rules for targets named subgoal_generator
 
 # Build rule for target.
@@ -207,19 +124,6 @@ subgoal_generator/fast:
 .PHONY : subgoal_generator/fast
 
 #=============================================================================
-# Target rules for targets named dynamic_graph_test
-
-# Build rule for target.
-dynamic_graph_test: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 dynamic_graph_test
-.PHONY : dynamic_graph_test
-
-# fast build rule for target.
-dynamic_graph_test/fast:
-	$(MAKE) -f CMakeFiles/dynamic_graph_test.dir/build.make CMakeFiles/dynamic_graph_test.dir/build
-.PHONY : dynamic_graph_test/fast
-
-#=============================================================================
 # Target rules for targets named src_lib
 
 # Build rule for target.
@@ -231,58 +135,6 @@ src_lib: cmake_check_build_system
 src_lib/fast:
 	$(MAKE) -f CMakeFiles/src_lib.dir/build.make CMakeFiles/src_lib.dir/build
 .PHONY : src_lib/fast
-
-#=============================================================================
-# Target rules for targets named gmock_main
-
-# Build rule for target.
-gmock_main: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 gmock_main
-.PHONY : gmock_main
-
-# fast build rule for target.
-gmock_main/fast:
-	$(MAKE) -f _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/build.make _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/build
-.PHONY : gmock_main/fast
-
-#=============================================================================
-# Target rules for targets named gmock
-
-# Build rule for target.
-gmock: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 gmock
-.PHONY : gmock
-
-# fast build rule for target.
-gmock/fast:
-	$(MAKE) -f _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/build.make _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/build
-.PHONY : gmock/fast
-
-#=============================================================================
-# Target rules for targets named gtest_main
-
-# Build rule for target.
-gtest_main: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 gtest_main
-.PHONY : gtest_main
-
-# fast build rule for target.
-gtest_main/fast:
-	$(MAKE) -f _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/build.make _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/build
-.PHONY : gtest_main/fast
-
-#=============================================================================
-# Target rules for targets named gtest
-
-# Build rule for target.
-gtest: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 gtest
-.PHONY : gtest
-
-# fast build rule for target.
-gtest/fast:
-	$(MAKE) -f _deps/googletest-build/googletest/CMakeFiles/gtest.dir/build.make _deps/googletest-build/googletest/CMakeFiles/gtest.dir/build
-.PHONY : gtest/fast
 
 src/agent.o: src/agent.cpp.o
 
@@ -446,6 +298,60 @@ src/main.cpp.s:
 	$(MAKE) -f CMakeFiles/subgoal_generator.dir/build.make CMakeFiles/subgoal_generator.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+src/subgoal_generator.o: src/subgoal_generator.cpp.o
+
+.PHONY : src/subgoal_generator.o
+
+# target to build an object file
+src/subgoal_generator.cpp.o:
+	$(MAKE) -f CMakeFiles/src_lib.dir/build.make CMakeFiles/src_lib.dir/src/subgoal_generator.cpp.o
+.PHONY : src/subgoal_generator.cpp.o
+
+src/subgoal_generator.i: src/subgoal_generator.cpp.i
+
+.PHONY : src/subgoal_generator.i
+
+# target to preprocess a source file
+src/subgoal_generator.cpp.i:
+	$(MAKE) -f CMakeFiles/src_lib.dir/build.make CMakeFiles/src_lib.dir/src/subgoal_generator.cpp.i
+.PHONY : src/subgoal_generator.cpp.i
+
+src/subgoal_generator.s: src/subgoal_generator.cpp.s
+
+.PHONY : src/subgoal_generator.s
+
+# target to generate assembly for a file
+src/subgoal_generator.cpp.s:
+	$(MAKE) -f CMakeFiles/src_lib.dir/build.make CMakeFiles/src_lib.dir/src/subgoal_generator.cpp.s
+.PHONY : src/subgoal_generator.cpp.s
+
+src/subgoal_generator_manager.o: src/subgoal_generator_manager.cpp.o
+
+.PHONY : src/subgoal_generator_manager.o
+
+# target to build an object file
+src/subgoal_generator_manager.cpp.o:
+	$(MAKE) -f CMakeFiles/src_lib.dir/build.make CMakeFiles/src_lib.dir/src/subgoal_generator_manager.cpp.o
+.PHONY : src/subgoal_generator_manager.cpp.o
+
+src/subgoal_generator_manager.i: src/subgoal_generator_manager.cpp.i
+
+.PHONY : src/subgoal_generator_manager.i
+
+# target to preprocess a source file
+src/subgoal_generator_manager.cpp.i:
+	$(MAKE) -f CMakeFiles/src_lib.dir/build.make CMakeFiles/src_lib.dir/src/subgoal_generator_manager.cpp.i
+.PHONY : src/subgoal_generator_manager.cpp.i
+
+src/subgoal_generator_manager.s: src/subgoal_generator_manager.cpp.s
+
+.PHONY : src/subgoal_generator_manager.s
+
+# target to generate assembly for a file
+src/subgoal_generator_manager.cpp.s:
+	$(MAKE) -f CMakeFiles/src_lib.dir/build.make CMakeFiles/src_lib.dir/src/subgoal_generator_manager.cpp.s
+.PHONY : src/subgoal_generator_manager.cpp.s
+
 src/velocity_obstacle.o: src/velocity_obstacle.cpp.o
 
 .PHONY : src/velocity_obstacle.o
@@ -500,109 +406,16 @@ src/velocity_obstacle_manager.cpp.s:
 	$(MAKE) -f CMakeFiles/src_lib.dir/build.make CMakeFiles/src_lib.dir/src/velocity_obstacle_manager.cpp.s
 .PHONY : src/velocity_obstacle_manager.cpp.s
 
-test/bvc_generator_test.o: test/bvc_generator_test.cpp.o
-
-.PHONY : test/bvc_generator_test.o
-
-# target to build an object file
-test/bvc_generator_test.cpp.o:
-	$(MAKE) -f CMakeFiles/bvc_gen_test.dir/build.make CMakeFiles/bvc_gen_test.dir/test/bvc_generator_test.cpp.o
-.PHONY : test/bvc_generator_test.cpp.o
-
-test/bvc_generator_test.i: test/bvc_generator_test.cpp.i
-
-.PHONY : test/bvc_generator_test.i
-
-# target to preprocess a source file
-test/bvc_generator_test.cpp.i:
-	$(MAKE) -f CMakeFiles/bvc_gen_test.dir/build.make CMakeFiles/bvc_gen_test.dir/test/bvc_generator_test.cpp.i
-.PHONY : test/bvc_generator_test.cpp.i
-
-test/bvc_generator_test.s: test/bvc_generator_test.cpp.s
-
-.PHONY : test/bvc_generator_test.s
-
-# target to generate assembly for a file
-test/bvc_generator_test.cpp.s:
-	$(MAKE) -f CMakeFiles/bvc_gen_test.dir/build.make CMakeFiles/bvc_gen_test.dir/test/bvc_generator_test.cpp.s
-.PHONY : test/bvc_generator_test.cpp.s
-
-test/dynamic_graph_test.o: test/dynamic_graph_test.cpp.o
-
-.PHONY : test/dynamic_graph_test.o
-
-# target to build an object file
-test/dynamic_graph_test.cpp.o:
-	$(MAKE) -f CMakeFiles/dynamic_graph_test.dir/build.make CMakeFiles/dynamic_graph_test.dir/test/dynamic_graph_test.cpp.o
-.PHONY : test/dynamic_graph_test.cpp.o
-
-test/dynamic_graph_test.i: test/dynamic_graph_test.cpp.i
-
-.PHONY : test/dynamic_graph_test.i
-
-# target to preprocess a source file
-test/dynamic_graph_test.cpp.i:
-	$(MAKE) -f CMakeFiles/dynamic_graph_test.dir/build.make CMakeFiles/dynamic_graph_test.dir/test/dynamic_graph_test.cpp.i
-.PHONY : test/dynamic_graph_test.cpp.i
-
-test/dynamic_graph_test.s: test/dynamic_graph_test.cpp.s
-
-.PHONY : test/dynamic_graph_test.s
-
-# target to generate assembly for a file
-test/dynamic_graph_test.cpp.s:
-	$(MAKE) -f CMakeFiles/dynamic_graph_test.dir/build.make CMakeFiles/dynamic_graph_test.dir/test/dynamic_graph_test.cpp.s
-.PHONY : test/dynamic_graph_test.cpp.s
-
-test/velocity_obstacle_test.o: test/velocity_obstacle_test.cpp.o
-
-.PHONY : test/velocity_obstacle_test.o
-
-# target to build an object file
-test/velocity_obstacle_test.cpp.o:
-	$(MAKE) -f CMakeFiles/velocity_obstacle_test.dir/build.make CMakeFiles/velocity_obstacle_test.dir/test/velocity_obstacle_test.cpp.o
-.PHONY : test/velocity_obstacle_test.cpp.o
-
-test/velocity_obstacle_test.i: test/velocity_obstacle_test.cpp.i
-
-.PHONY : test/velocity_obstacle_test.i
-
-# target to preprocess a source file
-test/velocity_obstacle_test.cpp.i:
-	$(MAKE) -f CMakeFiles/velocity_obstacle_test.dir/build.make CMakeFiles/velocity_obstacle_test.dir/test/velocity_obstacle_test.cpp.i
-.PHONY : test/velocity_obstacle_test.cpp.i
-
-test/velocity_obstacle_test.s: test/velocity_obstacle_test.cpp.s
-
-.PHONY : test/velocity_obstacle_test.s
-
-# target to generate assembly for a file
-test/velocity_obstacle_test.cpp.s:
-	$(MAKE) -f CMakeFiles/velocity_obstacle_test.dir/build.make CMakeFiles/velocity_obstacle_test.dir/test/velocity_obstacle_test.cpp.s
-.PHONY : test/velocity_obstacle_test.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... install/strip"
-	@echo "... install/local"
-	@echo "... install"
-	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... test"
-	@echo "... velocity_obstacle_test"
-	@echo "... bvc_gen_test"
 	@echo "... subgoal_generator"
-	@echo "... dynamic_graph_test"
 	@echo "... src_lib"
-	@echo "... gmock_main"
-	@echo "... gmock"
-	@echo "... gtest_main"
-	@echo "... gtest"
 	@echo "... src/agent.o"
 	@echo "... src/agent.i"
 	@echo "... src/agent.s"
@@ -621,21 +434,18 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/subgoal_generator.o"
+	@echo "... src/subgoal_generator.i"
+	@echo "... src/subgoal_generator.s"
+	@echo "... src/subgoal_generator_manager.o"
+	@echo "... src/subgoal_generator_manager.i"
+	@echo "... src/subgoal_generator_manager.s"
 	@echo "... src/velocity_obstacle.o"
 	@echo "... src/velocity_obstacle.i"
 	@echo "... src/velocity_obstacle.s"
 	@echo "... src/velocity_obstacle_manager.o"
 	@echo "... src/velocity_obstacle_manager.i"
 	@echo "... src/velocity_obstacle_manager.s"
-	@echo "... test/bvc_generator_test.o"
-	@echo "... test/bvc_generator_test.i"
-	@echo "... test/bvc_generator_test.s"
-	@echo "... test/dynamic_graph_test.o"
-	@echo "... test/dynamic_graph_test.i"
-	@echo "... test/dynamic_graph_test.s"
-	@echo "... test/velocity_obstacle_test.o"
-	@echo "... test/velocity_obstacle_test.i"
-	@echo "... test/velocity_obstacle_test.s"
 .PHONY : help
 
 
