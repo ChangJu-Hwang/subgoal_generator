@@ -21,6 +21,7 @@ typedef CGAL::MP_Float ET;
 #include "subgoal_generator/bvc_manager.h"
 #include "subgoal_generator/dynamic_graph_manager.h"
 #include "subgoal_generator/velocity_obstacle_manager.h"
+#include "subgoal_generator/pibt.h"
 
 namespace SubgoalGenerator
 {
@@ -77,53 +78,17 @@ namespace SubgoalGenerator
         }
 
     public:
-        bool generateBVC(
-            const DynamicGraph::Vertices &_group,
-            std::map<std::string, VoronoiCell> &_voronoi_diagram,
-            std::map<std::string, VoronoiCell> &_buffered_voronoi_diagram);
+        bool generate_subgoals(Agents &_agents);
 
+    public:
         bool updateVOCones(const DynamicGraph::Vertices &_group);
-
-        bool get_truncated_polygon(
-            const CGAL::Polygon_2<Kernel> &_polygon, const std::vector<Agent::Cone> &_cones,
-            CGAL::Polygon_2<Kernel> &_truncated_polygon);
-
-        std::list<CGAL::Polygon_2<Kernel>> get_triangular_subPolygons(const CGAL::Polygon_with_holes_2<Kernel> &_cell_w_holes);
-
-        std::list<CGAL::Polygon_2<Kernel>> get_convex_subPolygons(const CGAL::Polygon_2<Kernel> &_cell);
-
-        bool find_subgoal(
-            const Point_2 &_goal, std::list<CGAL::Polygon_2<Kernel>> &_convex_subPolygons,
-            Point_2 &_subgoal);
-
-        bool find_garrison(std::string _invader, const Point_2 &_subgoal,
-                           std::string &_garrison);
-
-        bool find_garrison_point_from_voronoi_diagram(
-            const Point_2 &_invader_point, const Point_2 &_subgoal,
-            const BufferedVoronoiDiagram::Generator::UniquePtr &_bvc_generator,
-            Point_2 &_garrison_point);
-
-    protected:
-        bool find_garrison_point(
-            const Point_2 &_invader_point, const Kernel::Segment_2 &_edge_seg, const VD &_vd,
-            Point_2 &_garrison_point);
-
-        bool find_garrison_name(
-            const Point_2 &_garrison_point, const std::string _invader,
-            std::string &_garrison);
-
-        bool validate_subgoal(std::string _agentName, const Point_2 &_subgoal);
-
-        bool is_in_the_same_face(const Point_2 &_p1, const Point_2 &_p2,
-                             const BufferedVoronoiDiagram::Generator::UniquePtr &_bvc_generator);
 
     protected:
         Agents agents_;
 
         DynamicGraph::Graph::SharedPtr graph_{std::make_shared<DynamicGraph::Graph>()};
 
-        std::vector<BufferedVoronoiDiagram::Generator::UniquePtr> groups_;
+        std::vector<PIBT::Solver::SharedPtr> solvers_;
 
     protected:
         double communication_range_{5.0};

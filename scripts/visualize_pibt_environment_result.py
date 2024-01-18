@@ -103,7 +103,7 @@ def show_VOCone(agent, color):
 
 
 if __name__ == '__main__': 
-    with open(os.path.join(os.getcwd(), "result", "subgoal_generator_result.yaml")) as velocity_obstacle:
+    with open(os.path.join(os.getcwd(), "result", "pibt_environment_result.yaml")) as velocity_obstacle:
         agents = yaml.load(velocity_obstacle, Loader=yaml.Loader)
         
     colors = generate_colors(agents)

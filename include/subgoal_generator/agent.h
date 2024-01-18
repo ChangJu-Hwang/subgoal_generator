@@ -24,6 +24,7 @@ namespace SubgoalGenerator
 
             Cone(const Cone &_cone)
             {
+                neighbor_ = _cone.neighbor_;
                 point_ = _cone.point_;
                 radius_ = _cone.radius_;
                 left_direction_ = _cone.left_direction_;
@@ -34,6 +35,7 @@ namespace SubgoalGenerator
             {
                 if (&_rhs != this)
                 {
+                    neighbor_ = _rhs.neighbor_;
                     point_ = _rhs.point_;
                     radius_ = _rhs.radius_;
                     left_direction_ = _rhs.left_direction_;
@@ -43,6 +45,7 @@ namespace SubgoalGenerator
                 return *this;
             }
 
+            std::string neighbor_;
             Eigen::Vector2d point_;
             double radius_;
             Eigen::Vector2d left_direction_;
@@ -58,14 +61,14 @@ namespace SubgoalGenerator
         inline std::string &name() { return name_; }
         inline const std::string &name() const { return name_; }
 
-        inline int &groupID() { return groupID_; }
-        inline const int &groupID() const { return groupID_; }
-
         inline Pose &pose() { return pose_; }
         inline const Pose &pose() const { return pose_; }
 
         inline Pose &goal() { return goal_; }
         inline const Pose &goal() const { return goal_; }
+
+        inline Pose &subgoal() { return subgoal_; }
+        inline const Pose &subgoal() const { return subgoal_; }
 
         inline Eigen::Vector2d &velocity() { return velocity_; }
         inline const Eigen::Vector2d &velocity() const { return velocity_; }
@@ -81,6 +84,9 @@ namespace SubgoalGenerator
 
         inline double &timeHorizon() { return timeHorizon_; }
         inline const double &timeHorizon() const { return timeHorizon_; }
+
+        inline bool &subgoal_fixed() { return subgoal_fixed_; }
+        inline const bool &subgoal_fixed() const { return subgoal_fixed_; }
 
     public:
         Agent &operator=(const Agent &_rhs);
@@ -102,10 +108,11 @@ namespace SubgoalGenerator
 
     protected:
         std::string name_;
-        int groupID_{-1};
 
         Pose pose_;
         Pose goal_;
+        Pose subgoal_;
+
         Eigen::Vector2d velocity_;
         double radius_{0.0};
 
@@ -113,6 +120,8 @@ namespace SubgoalGenerator
         std::vector<Cone> VOCones_;
 
         double timeHorizon_{0.05};
+
+        bool subgoal_fixed_{false};
 
     public:
         EIGEN_MAKE_ALIGNED_OPERATOR_NEW
